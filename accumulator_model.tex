@@ -1,0 +1,56 @@
+\input{/home/annie/Dropbox/texlive/annies_macros_1}
+
+\title{will diffusion parsing}
+\author{Annie Rak}
+\date{April 2018}
+
+\begin{document}
+
+
+We propose a simple model for how the fly sets its path in the post-activation period, which involves comparing a noisy accumulated distance estimate to a stored value.
+
+We model time in discrete steps $t_0,t_1,t_2 \dots t_k$, starting from $t_0$, the time of the last food encounter. We assume a constant walking velocity $v$; that is, the position of the fly updates each time step according to $\theta(t_k) = v\cdot(t_k-t_{k-1})$. 
+
+
+We posit that after each reversal, the fly begins with a reference value, $d^*$, most simply corresponding to a fixed oscillation range. It stores an accumulated value, $d_{est}$, which starts at $d_{est}(t_{r_{i-1}})=0$, 
+where $t_{r_{i-1}}$ is the timestep of the $i-1$th reversal. 
+
+
+
+$d_{est}$ updates each time step according to
+
+$$
+d_{est}(t_k) = d_{est}(t_{k-1}) + v(t_k-t_{k-1}) + \eta_k$$  
+
+where $\eta_k$ represents noise in the accumulation of a traveled distance estimate. The distribution of $\eta_k$ can depend on $d_{est}(t_{k-1})$, or can be independent and consistent each time step.
+
+With each new update of $d_{est}(t_k)$, the fly compares whether $d_{est}(t_k)>d^*$, and performs a reversal if so, which marks a $t_{r_i}$, the time of the $i$th reversal, and a reversal location $\theta(t_{r_i})$. When it reverses, $d_{est}$ is set to 0 and the process begins again.
+
+For every reversal after the first post-food reversal, we have 
+
+$$d^* = r_0 + |\theta_{F_1}-\theta_{F_2}| + c_0$$
+
+that is, the reference value is the sum of the inter-food distance $|\theta_{F_1}-\theta_{F_2}|$, plus an overshoot distance $c_0$, plus $r_0$. 
+$r_0$ is the distance travelled from the last food encounter to the first reversal.  
+
+It may be the case that after the first reversal, $d^*$ is instead stored as the $|\theta(t_{r_i}) - \theta(t_{r_{i-1}})|$, the previous inter-reversal distance--these two are indistinguishable we the data we have.
+
+Each path can be summarized as a series of reversal locations, $\{\theta(t_{r_0}),\theta(t_{r_1}), \dots \theta(t_{r_i}) \dots \theta(t_{r_n})\}$. We seek to demonstrate that the frequencies of reversal locations $\{\theta(t_{r_i})\}$, which we observe in the data, can be accounted for with the model described.
+
+We've already demonstrated this loosely. Now we describe a simple construction for $\eta_k$ to achieve model-data correspondence.
+
+The simplest construction is to have
+
+$$\eta_k \sim \mathcal{N}(0,\sigma^2)$$ 
+
+for all $k$.
+
+
+ 
+%If $theta_i$ is the location of the most recent reversal, the value $r_i = theta_{i+1} = theta_{i}$ is given by 
+
+
+%The first inter-reversal $r_0$ is determined by 
+
+
+\end{document}
