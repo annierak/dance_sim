@@ -8,6 +8,12 @@
 *.pkl
 *.png
 *.html
+*.pdf
+*.aux
+*.gz
+*.out
+*.log
+*.
 .ipynb_checkpoints*
 .__pychache__
 *.json
