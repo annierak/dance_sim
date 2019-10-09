@@ -18,3 +18,17 @@
 .__pychache__
 *.json
 *.zip
+*.txt
+*.tex
+UMAP_data_af/
+UMAP_data_af1/
+trial_reversals/
+ris_before/
+rev_data_be/
+rev_data_af/
+r_0andr_1adjusted/
+r_0andr_1/
+post_activation_traces_nontrial/
+k_inter_rev/
+emp_reversal_locs/
+5by5_data_923/
